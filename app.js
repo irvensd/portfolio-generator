@@ -31,9 +31,22 @@ const promptUser = () => {
       }
     },
     {
+      type: "confirm",
+      name: "confirmation",
+      message: "Would you like to enter some information about yourself for an About Section?",
+      default: true
+    },
+    {
       type: "input",
       name: "about",
       message: "Provide some information about yourself:",
+      when: ({confirmAbout}) => {
+        if (confirmAbout) {
+          return true;
+        } else {
+          return false;
+        }
+      }
     },
   ]);
 };
@@ -125,7 +138,7 @@ promptUser()
   .then(portfolioData => {
     console.log(portfolioData);
   });
-  
+
 
 
 // const fs = require("fs");
